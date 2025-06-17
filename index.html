@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe - Your Home Maintenance, Handled.</title>
+    <meta name="description" content="Breathe is a subscription service that handles all major home maintenance tasks for homeowners.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#1a237e', // Darker blue
+                        brandNavyLight: '#283593',
+                        brandNavyLighter: '#303f9f',
+                        // Removed brandTeal and brandMint
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply font-sans text-slate-700 antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+        .btn-primary {
+            @apply bg-gradient-to-r from-brandNavy to-brandNavyLight text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:opacity-90 transition-opacity;
+        }
+        .btn-secondary {
+            @apply border border-brandNavy text-brandNavy font-semibold px-6 py-3 rounded-lg hover:bg-brandNavy/10 transition-colors;
+        }
+        .card {
+            @apply rounded-lg border border-slate-200 bg-white p-6 text-center hover:shadow-lg transition-shadow duration-300;
+        }
+        .section-title {
+            @apply text-3xl sm:text-4xl font-semibold text-brandNavy text-center mb-12 sm:mb-16;
+        }
+        /* Style for the FAQ dropdowns */
+        details {
+            @apply bg-white shadow-sm rounded-lg mb-4;
+        }
+        summary {
+            @apply cursor-pointer p-5 flex justify-between items-center font-semibold text-lg text-slate-800;
+        }
+        summary::marker {
+            display: none; /* Hide default marker */
+        }
+        details[open] summary {
+            @apply border-b border-slate-200;
+        }
+        details[open] summary svg {
+            transform: rotate(180deg);
+        }
+        .faq-content {
+            @apply px-5 pb-5 text-slate-600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="sticky top-0 z-50 bg-white transition-shadow duration-150 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center">
+                    <a href="#" aria-label="Homepage">
+                        <h1 class="text-2xl font-bold text-brandNavy font-heading">Breathe</h1>
+                    </a>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6" aria-label="Main navigation">
+                    <ul class="flex items-center space-x-6">
+                        <li><a href="#value-prop" class="text-slate-600 hover:text-brandNavy font-medium transition-colors" aria-label="Our Value">Our Value</a></li>
+                        <li><a href="#how-it-works" class="text-slate-600 hover:text-brandNavy font-medium transition-colors" aria-label="How It Works">How It Works</a></li>
+                        <li><a href="#availability-check" class="text-slate-600 hover:text-brandNavy font-medium transition-colors" aria-label="Availability">Availability</a></li>
+                         <li><a href="#faq" class="text-slate-600 hover:text-brandNavy font-medium transition-colors" aria-label="FAQ">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <span class="hidden sm:block text-slate-700 font-medium text-sm">(555) 123-4567</span>
+                    <a href="#cta" class="btn-primary text-white font-semibold px-5 py-2.5 rounded-lg text-sm">
+                        Explore Plans
+                    </a>
+                    <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-600 hover:text-brandNavy" aria-label="Open menu" aria-expanded="false">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-16 md:top-20 left-0 right-0 bg-white shadow-lg py-4 z-40">
+            <nav class="px-4 space-y-2">
+                <a href="#value-prop" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brandNavy" aria-label="Our Value">Our Value</a>
+                <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brandNavy" aria-label="How It Works">How It Works</a>
+                <a href="#availability-check" class="block px-3 py-2 rounded-md text-base font-700 hover:bg-slate-100 hover:text-brandNavy" aria-label="Availability">Availability</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brandNavy" aria-label="FAQ">FAQ</a>
+                <hr class="my-2 border-slate-200">
+                <a href="#cta" class="block w-full text-center btn-primary text-white font-semibold px-5 py-2.5 rounded-lg">
+                    Explore Plans
+                </a>
+                <span class="block text-center pt-2 text-slate-600 font-medium text-sm">(555) 123-4567</span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-slate-50 py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-16">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl font-semibold text-brandNavy leading-tight mx-auto lg:mx-0">Your Home Maintenance, Handled.</h1>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 max-w-xl mx-auto lg:mx-0">Breathe maintains your home, so you can live in it.</p>
+                    <div id="hero-cta" class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#cta" class="btn-primary text-white font-semibold px-8 py-3 rounded-lg text-lg">
+                            Explore Plans
+                        </a>
+                        <a href="#how-it-works" class="btn-secondary border-brandNavy text-brandNavy font-semibold px-8 py-3 rounded-lg">
+                            How It Works
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Home Maintenance Illustration" class="rounded-xl shadow-lg max-w-full h-auto object-cover w-[500px] aspect-[4/3]" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="value-prop" class="bg-slate-50 py-10 sm:py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Our Value Proposition</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card">
+                        <div class="mx-auto w-14 h-14 bg-brandNavy/10 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-brandNavy" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900">Save Time</h3>
+                        <p class="mt-2 text-slate-600">Reclaim your weekends - save over 100 hours a year on home maintenance tasks.</p>
+                    </div>
+                    <div class="card">
+                        <div class="mx-auto w-14 h-14 bg-brandNavy/10 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-brandNavy" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900">Peace of Mind</h3>
+                        <p class="mt-2 text-slate-600">Enjoy your home without worrying about unexpected breakdowns or wrangling unreliable tradesmen.</p>
+                    </div>
+                    <div class="card">
+                        <div class="mx-auto w-14 h-14 bg-brandNavy/10 rounded-full flex items-center justify-center mb-6">
+                            <div class="flex items-center justify-center rounded-full w-12 h-12 border-2 border-brandNavy text-brandNavy font-bold text-xl" style="width: 1.8rem; height: 1.8rem; font-size: 1em">
+                                $
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900">Prevent Costly Repairs</h3>
+                        <p class="mt-2 text-slate-600">Our proactive maintenance can save you thousands by preventing premature failure of appliances and home systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-10 sm:py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">How It Works</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 max-w-6xl mx-auto relative">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="flex items-center justify-center rounded-full w-12 h-12 border-2 border-brandNavy text-brandNavy font-bold text-xl mb-4 bg-brandNavy/10">1</div>
+                        <div class="bg-slate-50 p-6 rounded-lg shadow-md w-full">
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Sign Up</h3>
+                            <p class="text-slate-600">Join Breathe. <br><br> </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="flex items-center justify-center rounded-full w-12 h-12 border-2 border-brandNavy text-brandNavy font-bold text-xl mb-4 bg-brandNavy/10">2</div>
+                        <div class="bg-slate-50 p-6 rounded-lg shadow-md w-full">
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">We Handle Everything</h3>
+                            <p class="text-slate-600">We take care of all your home's major maintenance tasks, indoor and outdoor.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="flex items-center justify-center rounded-full w-12 h-12 border-2 border-brandNavy text-brandNavy font-bold text-xl mb-4 bg-brandNavy/10">3</div>
+                        <div class="bg-slate-50 p-6 rounded-lg shadow-md w-full">
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Enjoy Your Home</h3>
+                            <p class="text-slate-600">Spend your free time with your family, not your toolbox.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="availability-check" class="bg-slate-50 py-10 sm:py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="section-title">Is Breathe Available in Your Area?</h2>
+                <p class="text-lg text-slate-600 mb-8">Enter your zip code to find out!</p>
+                <div id="zipcode-input-section" class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md mx-auto">
+                    <input type="text" id="zipcode" placeholder="Enter your zip code" class="shadow-sm focus:ring-brandNavy focus:border-brandNavy block w-full sm:text-sm border-slate-300 rounded-md px-4 py-2.5">
+                    <button onclick="checkAvailability()" class="btn-primary text-white font-semibold px-8 py-3 rounded-lg text-lg">
+                        Check Now
+                    </button>
+                </div>
+                <p id="availability-message" class="mt-6 text-lg font-semibold"></p>
+
+                <div id="email-signup-section" class="hidden flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md mx-auto mt-6">
+                    <input type="email" id="email-input" placeholder="Enter your email" class="shadow-sm focus:ring-brandNavy focus:border-brandNavy block w-full sm:text-sm border-slate-300 rounded-md px-4 py-2.5">
+                    <button onclick="submitEmail()" class="btn-primary text-white font-semibold px-8 py-3 rounded-lg text-lg">
+                        Notify Me
+                    </button>
+                </div>
+                <p id="email-message" class="mt-6 text-lg font-semibold"></p>
+            </div>
+        </section>
+
+        <section id="faq" class="py-10 sm:py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto">
+                    <details class="group">
+                        <summary class="flex justify-between items-center text-slate-800 focus:outline-none">
+                            What services does Breathe provide?
+                            <svg class="w-6 h-6 text-brandNavy transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 10 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="faq-content py-5">
+                            <p>Breathe cover all major home maintenance tasks including: Gutter & roof cleaning, HVAC system maintenance, appliance maintenance, winterization, seasonal yard work, safety testing (radon, lead, etc), pest prevention, and more.</p>
+                        </div>
+                    </details>
+
+                    <details class="group">
+                        <summary class="flex justify-between items-center text-slate-800 focus:outline-none">
+                            How does the pricing work?
+                            <svg class="w-6 h-6 text-brandNavy transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="faq-content py-5">
+                            <p>Breathe is an annual subscription for $400 per month.</p>
+                        </div>
+                    </details>
+
+                    <details class="group">
+                        <summary class="flex justify-between items-center text-slate-800 focus:outline-none">
+                            I just purchased a home. Can I use Breathe?
+                            <svg class="w-6 h-6 text-brandNavy transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="faq-content py-5">
+                            <p>
+                            Absolutely! In fact, we can help you track all of the work done on your home over its lifetime. If you ever have a question about the house we can also connect you directly to the real estate agents who helped with the sale. 
+
+                            Finally, if you decide to sell, all your home's upkeep information is in one easy place to showcase to the new buyer.
+                            </p>
+                        </div>
+                    </details>
+
+                     <details class="group">
+                        <summary class="flex justify-between items-center text-slate-800 focus:outline-none">
+                            How do I sign up for Breathe?
+                            <svg class="w-6 h-6 text-brandNavy transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="faq-content py-5">
+                            <p>Signing up is easy! First, check if Breathe is available in your zip code using the tool above. If we are, you can then proceed to fill out your details to get started with a worry-free home maintenance experience.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-100 py-6 text-center border-t border-slate-200">
+        <p class="text-slate-600 text-sm">© 2025 Breathe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkAvailability() {
+            const zipcode = document.getElementById("zipcode").value;
+            const messageElement = document.getElementById("availability-message");
+            const zipcodeInputSection = document.getElementById("zipcode-input-section");
+            const emailSignupSection = document.getElementById("email-signup-section");
+            const emailMessageElement = document.getElementById("email-message");
+
+            emailMessageElement.textContent = ""; // Clear previous email messages
+
+            available_zips = [
+                "98101", "98102", "98103", "98104", "98105", "98106", "98107", "98108", "98109", "98112", "98115", "98116", "98117", "98118", "98119", "98121", "98122", "98125", "98126", "98133", "98134", "98136",
+                "98144", "98146", "98148", "98154", "98155", "98158", "98164", "98166", "98168", "98177", "98178", "98188", "98195", "98198", "98199", "98004", "98005", "98006", "98007", "98008", "98039", "98040",
+                "98052", "98053", "98033", "98034", "98011", "98072", "98012", "98021", "98087", "98036", "98043", "98026", "98020", "98037", "98002", "98003", "98030", "98031", "98032", "98042", "98422"
+            ]
+            if (available_zips.includes(zipcode)) {
+                messageElement.textContent = "Great news! Breathe is coming to your area soon. Enter your email to get started!";
+                messageElement.style.color = "green";
+                zipcodeInputSection.classList.add("hidden");
+                emailSignupSection.classList.remove("hidden");
+            } else if (zipcode.length !== 5 || isNaN(parseInt(zipcode))) {
+                messageElement.textContent = "Please enter a valid 5-digit zip code.";
+                messageElement.style.color = "red";
+                // zipcodeInputSection.classList.remove("hidden");
+                // emailSignupSection.classList.add("hidden");
+            } else {
+                messageElement.textContent = "Breathe is not yet available in your area. Enter your email and we'll notify you when we expand!";
+                messageElement.style.color = "orange";
+                zipcodeInputSection.classList.add("hidden");
+                emailSignupSection.classList.remove("hidden");
+            }
+        }
+
+        async function submitEmail() {
+            const email = document.getElementById("email-input").value;
+            const zipcode = document.getElementById("zipcode").value; // Get the zip code from the hidden input
+            const emailMessageElement = document.getElementById("email-message");
+
+            // Basic email validation
+            if (email === "") {
+                emailMessageElement.textContent = "Please enter your email address.";
+                emailMessageElement.style.color = "red";
+                return; // Stop the function if email is empty
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailMessageElement.textContent = "Please enter a valid email address.";
+                emailMessageElement.style.color = "red";
+                return; // Stop the function if email is invalid
+            }
+
+            // Show a loading message
+            emailMessageElement.textContent = "Submitting your email...";
+            emailMessageElement.style.color = "blue";
+
+            try {
+                // IMPORTANT: Replace this URL with the actual 'form response' URL of your Google Form.
+                // You can get this by inspecting the form's HTML or using a network tab
+                // after submitting a test entry. It typically looks like:
+                // https://docs.google.com/forms/d/e/{FORM_ID}/formResponse
+                const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfanjz2LGoGukVp3Uh-H3xstpWS9WaXY6XL4oQ-eKXpTS26og/formResponse';
+
+                // IMPORTANT: Replace these 'entry.XXXXXXXXXX' values with the actual
+                // 'name' attributes of your Google Form's email and zip code fields.
+                // You can find these by viewing the page source of your Google Form,
+                // or using your browser's developer tools to inspect the input elements.
+                const emailFieldEntry = 'entry.581826770';
+                const zipcodeFieldEntry = 'entry.87610321'; 
+
+                // Create FormData to send the data as form-urlencoded
+                const formData = new FormData();
+                formData.append(emailFieldEntry, email);
+                formData.append(zipcodeFieldEntry, zipcode);
+
+                // Make the POST request to the Google Form
+                const response = await fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for cross-origin requests to Google Forms
+                    body: formData, // FormData will automatically set the Content-Type header
+                });
+
+                // Google Forms typically respond with a 302 redirect or a simple HTML page,
+                // not a JSON response, and 'no-cors' mode means we can't inspect the response status directly.
+                // We assume success if no network error occurred.
+                emailMessageElement.textContent = "Thank you for your interest! We'll notify you at " + email + ".";
+                emailMessageElement.style.color = "green";
+                document.getElementById("email-input").value = ""; // Clear the email input
+                // You might want to hide the email input section or redirect the user here
+
+            } catch (error) {
+                // Handle network errors (e.g., no internet connection, blocked by CORS)
+                emailMessageElement.textContent = "An error occurred. Please check your internet connection and try again.";
+                emailMessageElement.style.color = "red";
+                console.error('Network error or CORS issue:', error);
+            }
+        }
+
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
